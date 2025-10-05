@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ankit Gaur Center of Excellence</title>
+
+  <!-- Poppins Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --deep-navy: #122049;
+      --gold: #EFB83A;
+      --light-cyan: #33D7FF;
+      --white: #ffffff;
+      --dark-blue: #0e1835;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: var(--white);
+      background: linear-gradient(rgba(18,32,73,.82), rgba(18,32,73,.82)), url('background.png') center/cover no-repeat;
+      background-attachment: fixed;
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
+    /* Header / Nav */
+    header {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 20px 40px;
+      background-color: var(--dark-blue);
+      border-bottom: 2px solid var(--gold);
+      box-shadow: 0 2px 6px rgba(0,0,0,.4);
+      position: sticky; top: 0; z-index: 1000;
+    }
+
+    .logo-placeholder {
+      height: 60px;
+      display: flex; align-items: center; justify-content: center;
+      background-color: var(--dark-blue);
+    }
+    .logo-placeholder img { height: 100%; width: auto; }
+
+    nav ul { list-style: none; display: flex; gap: 22px; }
+    nav ul li a {
+      position: relative;
+      font-size: 1.15rem;
+      font-weight: 700;
+      padding: 12px 20px;
+      border-radius: 12px;
+      color: var(--gold);
+      text-decoration: none;
+      transition: color .25s ease, background-color .25s ease, transform .2s ease;
+    }
+    nav ul li a:hover {
+      background-color: rgba(51, 215, 255, 0.08);
+      transform: translateY(-1px);
+    }
+    nav ul li a::after {
+      content: "";
+      position: absolute; inset: 0;
+      border: 2px solid var(--light-cyan);
+      border-radius: 14px;
+      opacity: 0; transform: scale(0.9);
+      transition: opacity .25s ease, transform .25s ease;
+      pointer-events: none;
+    }
+    nav ul li a:hover::after,
+    nav ul li a:focus-visible::after { opacity: 1; transform: scale(1); }
+
+    /* HERO */
+    .hero {
+      display: flex; align-items: center; justify-content: center;
+      min-height: 78vh;
+      padding: 90px 20px 48px;
+      text-align: center;
+    }
+    .hero-content { max-width: 900px; margin: 0 auto; }
+
+    .divider {
+      width: min(900px, 90%);
+      height: 2px;
+      background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(239,184,58,0) 5%,
+        rgba(239,184,58,0.85) 50%,
+        rgba(239,184,58,0) 95%,
+        transparent 100%
+      );
+      border-radius: 999px;
+      box-shadow: 0 0 12px rgba(239,184,58,.35);
+      margin: 0 auto;
+    }
+    .divider.top    { margin-bottom: 16px; }
+    .divider.bottom { margin-top: 16px; }
+
+    /* Title */
+    .hero-title {
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 6px;
+      line-height: 1.1;
+    }
+    .hero-title h1 {
+      font-weight: 500;
+      font-size: clamp(2.4rem, 5vw, 3.3rem);
+      color: var(--light-cyan);
+      letter-spacing: 0.4px;
+    }
+    .hero-title h2 {
+      font-weight: 400;
+      font-size: clamp(2.4rem, 5vw, 3.3rem);
+      color: var(--white);
+      opacity: 0.95;
+    }
+
+    /* Subtitle with faint glow */
+    .hero-subtitle {
+      font-weight: 500;
+      font-size: 1.1rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-top: 24px;
+      text-shadow: 0 0 8px rgba(239,184,58,0.35),
+                   0 0 14px rgba(239,184,58,0.25);
+    }
+
+    /* CTA Button */
+    .get-started-btn {
+      background-color: var(--gold);
+      color: var(--deep-navy);
+      padding: 16px 42px;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all .2s ease;
+      margin-top: 30px;
+    }
+    .get-started-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 18px rgba(0,0,0,.25);
+      opacity: 0.95;
+    }
+
+    /* Form */
+    .form-wrap { padding: 40px 20px 80px; display: grid; place-items: center; }
+    .form-section {
+      background-color: var(--dark-blue);
+      color: var(--white);
+      border-radius: 14px;
+      padding: 32px;
+      width: min(560px, 92vw);
+      box-shadow: 0 12px 28px rgba(0,0,0,.35);
+    }
+    .form-section h3 {
+      font-weight: 700;
+      font-size: 1.6rem;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .form-group { margin-bottom: 18px; text-align: left; }
+    .form-group label { display: block; margin-bottom: 6px; font-weight: 600; }
+    .form-group input, .form-group textarea {
+      width: 100%; padding: 12px;
+      border: 1px solid var(--light-cyan);
+      border-radius: 10px; font-size: 1rem;
+      background-color: #1a2d54; color: var(--white);
+    }
+    .form-group textarea { resize: vertical; min-height: 110px; }
+    .submit-btn {
+      background-color: var(--light-cyan);
+      color: var(--deep-navy);
+      border: none;
+      padding: 12px 24px;
+      font-size: 1.1rem;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all .2s ease;
+    }
+    .submit-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 16px rgba(0,0,0,.25);
+      opacity: .95;
+    }
+
+    footer {
+      margin-top: 60px;
+      padding: 20px;
+      text-align: center;
+      background-color: rgba(18, 32, 73, 0.95);
+      border-top: 2px solid var(--gold);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo-placeholder">
+      <img src="logo.png" alt="Logo">
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Programs</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <div class="divider top"></div>
+
+      <div class="hero-title">
+        <h1>Ankit Gaur Center of Excellence</h1>
+        <h2>BITS Pilani Dubai Campus</h2>
+      </div>
+
+      <p class="hero-subtitle">LEADING HUB FOR BLOCKCHAIN, AI AND WEB3 INNOVATION</p>
+
+      <div class="divider bottom"></div>
+
+      <button class="get-started-btn" onclick="document.getElementById('signup-form').scrollIntoView({ behavior: 'smooth', block: 'center' })">
+        Get Started
+      </button>
+    </div>
+  </section>
+
+  <section class="form-wrap">
+    <div class="form-section" id="signup-form">
+      <h3>Get Started</h3>
+      <form>
+        <div class="form-group">
+          <label for="full-name">Full Name</label>
+          <input type="text" id="full-name" name="full-name" placeholder="Your full name" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" placeholder="you@example.com" required>
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" placeholder="Type your message..."></textarea>
+        </div>
+        <button type="submit" class="submit-btn">Submit</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    © 2025 AGCOE. All rights reserved.
+  </footer>
+</body>
+</html>
