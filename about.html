@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About — Ankit Gaur Center of Excellence</title>
+
+  <!-- Poppins font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+
+  <style>
+    :root{
+      --deep-navy:#122049;
+      --dark-blue:#0e1835;
+      --gold:#EFB83A;
+      --light-cyan:#33D7FF;
+      --white:#fff;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:'Poppins',sans-serif;
+      color:var(--white);
+      background:linear-gradient(rgba(18,32,73,.82),rgba(18,32,73,.82)),url('background.png') center/cover no-repeat;
+      background-attachment:fixed;
+      line-height:1.65;
+      min-height:100vh;
+    }
+
+    /* Header / Nav (same look & animation) */
+    header{
+      display:flex;justify-content:space-between;align-items:center;
+      padding:20px 40px;background-color:var(--dark-blue);
+      border-bottom:2px solid var(--gold);box-shadow:0 2px 6px rgba(0,0,0,.4);
+      position:sticky;top:0;z-index:1000;
+    }
+    .logo-placeholder{height:60px;display:flex;align-items:center;justify-content:center;background-color:var(--dark-blue)}
+    .logo-placeholder img{height:100%;width:auto;display:block}
+    nav ul{list-style:none;display:flex;gap:22px}
+    nav ul li a{
+      position:relative;font-size:1.05rem;font-weight:700;color:var(--gold);
+      padding:10px 18px;border-radius:12px;text-decoration:none;
+      transition:color .25s ease,background-color .25s ease,transform .2s ease;
+    }
+    nav ul li a:hover{background-color:rgba(51,215,255,.08);transform:translateY(-1px)}
+    nav ul li a::after{
+      content:"";position:absolute;inset:0;border:2px solid var(--light-cyan);
+      border-radius:14px;opacity:0;transform:scale(.9);
+      transition:opacity .25s ease,transform .25s ease;pointer-events:none;
+    }
+    nav ul li a:hover::after,nav ul li a:focus-visible::after{opacity:1;transform:scale(1)}
+    .nav-active{color:var(--light-cyan)}
+    /* Layout helpers */
+    .container{width:min(1100px,92%);margin-inline:auto}
+    .spacer-lg{height:40px}
+    .spacer-md{height:24px}
+    .spacer-sm{height:14px}
+
+    /* Dividers */
+    .divider{
+      width:min(900px,94%);height:2px;margin:0 auto;
+      background:linear-gradient(90deg,transparent 0%,rgba(239,184,58,0) 5%,rgba(239,184,58,.85) 50%,rgba(239,184,58,0) 95%,transparent 100%);
+      border-radius:999px;box-shadow:0 0 12px rgba(239,184,58,.35);
+    }
+    .divider.tight{margin-block:16px}
+
+    /* Hero */
+    .hero{
+      padding:72px 0 32px;text-align:center;display:grid;place-items:center;
+    }
+    .hero-wrap{width:min(1100px,92%);display:grid;gap:22px;justify-items:center}
+    .hero-img{
+      width:min(1100px,92%);aspect-ratio:16/9;border-radius:16px;overflow:hidden;
+      box-shadow:0 18px 40px rgba(0,0,0,.35);border:1px solid rgba(255,255,255,.08);
+    }
+    .hero-img img{width:100%;height:100%;object-fit:cover;display:block}
+    .hero-title{
+      display:flex;flex-direction:column;align-items:center;line-height:1.1;gap:6px;
+    }
+    .hero-title h1{
+      font-weight:600;color:var(--light-cyan);
+      font-size:clamp(2.1rem,4.2vw,3rem);letter-spacing:.3px;text-align:center;
+    }
+    .hero-title h2{
+      font-weight:400;color:var(--white);opacity:.95;
+      font-size:clamp(2.1rem,4.2vw,3rem);text-align:center;
+    }
+    .hero-sub{font-weight:500;font-size:1rem;letter-spacing:2px;text-transform:uppercase;color:var(--gold);
+      text-shadow:0 0 8px rgba(239,184,58,.35),0 0 14px rgba(239,184,58,.25);
+    }
+
+    /* Content sections */
+    section.about{padding:26px 0 70px}
+    .grid{
+      display:grid;grid-template-columns:repeat(12,1fr);gap:22px;align-items:start;
+    }
+    .card{
+      background:rgba(14,24,53,.75);backdrop-filter:saturate(120%) blur(2px);
+      border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:22px;
+      box-shadow:0 10px 28px rgba(0,0,0,.28);
+    }
+    .card h3{font-size:1.25rem;color:var(--light-cyan);margin-bottom:10px}
+    .card p{opacity:.95}
+
+    /* Columns */
+    .col-12{grid-column:span 12}
+    .col-6{grid-column:span 6}
+    .col-4{grid-column:span 4}
+
+    /* List styling */
+    .list{display:grid;gap:10px;margin-top:6px}
+    .list li{list-style:none;display:flex;gap:10px}
+    .bullet{width:8px;height:8px;border-radius:999px;background:var(--light-cyan);margin-top:.6em;flex:0 0 8px}
+
+    /* Footer */
+    footer{padding:20px;text-align:center;background:rgba(18,32,73,.95);border-top:2px solid var(--gold)}
+
+    @media (max-width:900px){
+      .col-6,.col-4{grid-column:span 12}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo-placeholder">
+      <!-- swap to your real logo file -->
+      <img src="logo.png" alt="AGCOE logo"/>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a class="nav-active" href="about.html">About</a></li>
+        <li><a href="#">Programs</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-wrap">
+      <div class="hero-img">
+        <!-- Save your image as about-hero.jpg (or update the src) -->
+        <img src="about-hero.png" alt="AGCOE with BITS Pilani Dubai leadership team"/>
+      </div>
+
+      <div class="divider tight"></div>
+
+      <div class="hero-title">
+        <h1>Ankit Gaur Center of Excellence</h1>
+        <h2>About Us</h2>
+      </div>
+
+      <p class="hero-sub">LEADING HUB FOR BLOCKCHAIN, AI AND WEB3 INNOVATION</p>
+
+      <div class="divider tight"></div>
+    </div>
+  </section>
+
+  <!-- ABOUT CONTENT -->
+  <section class="about">
+    <div class="container grid">
+      <!-- Left: Story -->
+      <div class="col-6 card">
+        <h3>Our Story</h3>
+        <p>
+          The Ankit Gaur Center of Excellence (AGCOE) was founded with a mission to accelerate innovation at the
+          intersection of <strong>Blockchain, Artificial Intelligence, and Web3</strong>. Rooted in academic rigor and
+          real-world impact, AGCOE collaborates closely with BITS Pilani Dubai Campus to build next-gen talent,
+          drive applied research, and incubate industry-ready solutions.
+        </p>
+        <div class="spacer-sm"></div>
+        <p>
+          We run hands-on labs, sprints, and partner projects that take ideas from prototype to production. Our
+          programs emphasize responsible engineering, open standards, and community knowledge-sharing.
+        </p>
+      </div>
+
+      <!-- Right: Quick facts -->
+      <div class="col-6 card">
+        <h3>What We Do</h3>
+        <ul class="list">
+          <li><span class="bullet"></span><span>Student fellowships and technical mentorships in Blockchain, AI, and Web3.</span></li>
+          <li><span class="bullet"></span><span>Research collaborations with faculty and industry on high-impact challenges.</span></li>
+          <li><span class="bullet"></span><span>Developer workshops, meetups, and certification-ready learning paths.</span></li>
+          <li><span class="bullet"></span><span>Startup incubation and proof-of-concepts with ecosystem partners.</span></li>
+        </ul>
+      </div>
+
+      <!-- Mission -->
+      <div class="col-4 card">
+        <h3>Mission</h3>
+        <p>
+          Empower learners and builders to create secure, scalable, and ethical systems that shape the digital
+          economy—bridging research, education, and entrepreneurship.
+        </p>
+      </div>
+
+      <!-- Vision -->
+      <div class="col-4 card">
+        <h3>Vision</h3>
+        <p>
+          Become the region’s most trusted launchpad for Web3 and AI talent—recognized for excellence, open
+          collaboration, and measurable real-world outcomes.
+        </p>
+      </div>
+
+      <!-- Values -->
+      <div class="col-4 card">
+        <h3>Values</h3>
+        <ul class="list">
+          <li><span class="bullet"></span><span>Integrity & Security-by-Design</span></li>
+          <li><span class="bullet"></span><span>Open Source & Interoperability</span></li>
+          <li><span class="bullet"></span><span>Hands-on Learning & Impact</span></li>
+          <li><span class="bullet"></span><span>Inclusive, Community-first Culture</span></li>
+        </ul>
+      </div>
+
+      <!-- Leadership / Collaboration note -->
+      <div class="col-12 card">
+        <h3>Collaboration with BITS Pilani, Dubai Campus</h3>
+        <p>
+          AGCOE proudly partners with BITS Pilani, Dubai Campus to co-create curriculum modules, conduct joint
+          research, and host industry showcases. This collaboration aligns academic depth with market needs—
+          enabling students and professionals to build portfolio-ready projects and gain access to cutting-edge
+          infrastructure and mentorship.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <footer id="contact">
+    © 2025 AGCOE. All rights reserved.
+  </footer>
+</body>
+</html>
